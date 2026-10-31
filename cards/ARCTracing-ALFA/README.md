@@ -19,6 +19,7 @@ three-sigma reaches within 5 %, two configurations predicted blind. Validated ra
 | `modules/ModulesLinkDef.h`, `Makefile` | registration and build |
 | `cards/ARCTracing-ALFA/delphes_card_ALFA_Xe2bar.tcl` | the ALFA card: 3 T, all-MAPS tracker, ARC with xenon at 2 bar and aerogel n = 1.030, GRAiNITA ECAL |
 | `cards/ARCTracing-ALFA/delphes_card_ALFA_C4F10.tcl` | the same with C4F10 at 1 bar in the ARC |
+| `cards/ARCTracing-ALFA/delphes_card_ALFA_Xe2bar_optimised.tcl` | the optimised ARC: Xe 2 bar, SiPM arrays enlarged to the largest that fit the cells |
 | `cards/ARCTracing-ALFA/cells_ALFA_o1_v01.txt` | the 1203 ARC cells of `ALFA_o1_v01` (mirror, SiPM array, aerogel per cell; 80 x 80 mm arrays) |
 | `cards/ARCTracing-ALFA/cells_ALFA_o1_v01_bigSiPM.txt` | the same cells with the largest arrays that fit (89.6 mm barrel, 108.8 mm endcap) |
 | `cards/ARCTracing-ALFA/arc_optics_tables.txt` | n(E) of Xe, C4F10 and aerogel, aerogel Rayleigh length, SiPM PDE, mirror reflectivity (from the Geant4 materials) |
@@ -27,17 +28,19 @@ three-sigma reaches within 5 %, two configurations predicted blind. Validated ra
 
 ## Which ARC configuration the cards describe
 
-The validation and the design study use three labels; the cards in this repository are **B**:
+The validation and the design study use three labels; the cards in this repository are **B** (two gases) and **C** (Xe 2 bar):
 
 | label | aerogel | SiPM arrays | status |
 |---|---|---|---|
 | A | n = 1.019, 10 mm | 80 x 80 mm (as built) | validated (blind) |
-| **B** | **n = 1.030, 10 mm** | **80 x 80 mm (as built in k4geo ALFA_o1_v01)** | **validated; the two cards here** |
-| C | n = 1.030, 10 mm | 89.6 mm barrel / 108.8 mm endcap, the largest that fit the cells | validated (blind); the optimised design |
+| **B** | **n = 1.030, 10 mm** | **80 x 80 mm (as built in k4geo ALFA_o1_v01)** | **validated; `delphes_card_ALFA_Xe2bar.tcl`, `delphes_card_ALFA_C4F10.tcl`** |
+| **C** | **n = 1.030, 10 mm** | **89.6 mm barrel / 108.8 mm endcap, the largest that fit the cells** | **validated (blind); the optimised design, `delphes_card_ALFA_Xe2bar_optimised.tcl`** |
 
-Both cards state this in their first lines. To run the optimised design, change one line in either card:
-`set CellFile cards/ARCTracing-ALFA/cells_ALFA_o1_v01_bigSiPM.txt` (the table is included). Everything else -- gas, pixels,
-mirrors, reconstruction -- is identical. A dedicated `delphes_card_ALFA_optimised.tcl` will follow.
+Every card states its configuration in its first lines. The optimised card differs from the as-built Xe 2 bar card only by
+the cell table (`cells_ALFA_o1_v01_bigSiPM.txt`) and by the ARC material in the track fit (6.2 % instead of 6.0 % X0 at
+90 deg, from the larger sensors); gas, pixels, mirrors and reconstruction are identical. Its gain is in the aerogel:
+3-sigma pi/K coverage 0.9-25 GeV and K/p 3.0-43 GeV (as built: 1.2-25 and 3.6-43 GeV). A C4F10 version is the C4F10
+card with the same two changes.
 
 ## Build and run
 
