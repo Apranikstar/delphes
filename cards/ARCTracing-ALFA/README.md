@@ -17,9 +17,9 @@ three-sigma reaches within 5 %, two configurations predicted blind. Validated ra
 | `modules/ARCTracing.h`, `modules/ARCTracing.cc` | the module |
 | `classes/DelphesClasses.h/.cc`, `modules/TreeWriter.cc` | 16 ARC members on `Candidate` and `Track` (below) |
 | `modules/ModulesLinkDef.h`, `Makefile` | registration and build |
-| `cards/ARCTracing-ALFA/delphes_card_ALFA_Xe2bar.tcl` | the ALFA card: 3 T, all-MAPS tracker, ARC with xenon at 2 bar and aerogel n = 1.030, GRAiNITA ECAL |
-| `cards/ARCTracing-ALFA/delphes_card_ALFA_C4F10.tcl` | the same with C4F10 at 1 bar in the ARC |
-| `cards/ARCTracing-ALFA/delphes_card_ALFA_Xe2bar_casestudy.tcl` | the ARC case study C (design study by Apranik): Xe 2 bar, SiPM arrays enlarged to the largest that fit the cells |
+| `cards/ARCTracing-ALFA/delphes_card_ALFA_Xe2bar.tcl` | the ALFA card: 3 T, all-MAPS tracker, ARC with xenon at 2 bar (n = 1.001313 at 3 eV) and 10 mm aerogel (n = 1.0299), 80 mm SiPM arrays, GRAiNITA ECAL |
+| `cards/ARCTracing-ALFA/delphes_card_ALFA_C4F10.tcl` | the same with C4F10 at 1 bar in the ARC (n = 1.001331 at 3 eV); aerogel n = 1.0299 |
+| `cards/ARCTracing-ALFA/delphes_card_ALFA_Xe2bar_casestudy.tcl` | the ARC case study C (design study by Apranik): Xe 2 bar (n = 1.001313), aerogel n = 1.0299, SiPM arrays enlarged to the largest that fit the cells (89.6 / 108.8 mm) |
 | `cards/ARCTracing-ALFA/cells_ALFA_o1_v01.txt` | the 1203 ARC cells of `ALFA_o1_v01` (mirror, SiPM array, aerogel per cell; 80 x 80 mm arrays) |
 | `cards/ARCTracing-ALFA/cells_ALFA_o1_v01_bigSiPM.txt` | the same cells with the largest arrays that fit (89.6 mm barrel, 108.8 mm endcap) |
 | `cards/ARCTracing-ALFA/arc_optics_tables.txt` | n(E) of Xe, C4F10 and aerogel, aerogel Rayleigh length, SiPM PDE, mirror reflectivity (from the Geant4 materials) |
