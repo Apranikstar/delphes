@@ -52,8 +52,9 @@ make -j8 HAS_PYTHIA8=true
 ```
 
 The cards refer to `cards/ARCTracing-ALFA/...` relative to the Delphes directory: run from there or make the two paths absolute.
-Speed: the ray tracing adds about 1.9 ms per e+e- -> ZH event at 240 GeV (about 80 us per charged track, ~12 000 tracks/s
-per core): 5.5 ms per event with the ARC against 3.6 ms without, Pythia and ROOT output included (10k events, AMD EPYC 7302).
+Speed: the ARC adds about 4.2 ms per e+e- -> ZH event at 240 GeV (about 180 us per charged track): 8.0 ms per event with the
+ARC against 3.7 ms without, Pythia and ROOT output included (10k events, AMD EPYC 7302). About half of it is the test photons
+of the calibrated hypothesis test (TestPhotons = 40); TestPhotons = 20 halves that part.
 
 ## Module parameters (the values of the cards)
 
@@ -89,10 +90,14 @@ Track.ARCprobPi / ARCprobK / ARCprobP                   exp(-chi2/2) normalised 
 Track.ARCmass                                           mass of the best hypothesis [GeV], -1 if no ring
 ```
 
-For hypothesis h the chi2 adds, per radiator, ((reco - theta_h)/sigma)^2 when a ring is expected and found,
-2 N_exp,h (= -2 ln P(0 | N_exp,h)) when a ring is expected and none is found, and (reco/sigma)^2 when a ring is found
-where h predicts none; N_exp,h is obtained by tracing test photons at beta_h through the cell, so the acceptance is
-in the test.
+For hypothesis h the chi2 adds, per radiator, ((reco - theta_h)/sigma_h)^2 when a ring is expected and found,
+-2 ln P(N < MinPe | N_exp,h) when a ring is expected and none is found (a ring needs MinPe photons), and (reco/sigma)^2
+when a ring is found where h predicts none. theta_h, sigma_h and N_exp,h come from test photons emitted at beta_h along
+the reconstructed track, traced through the cell and reconstructed exactly like the hits: theta_h is their median, so the
+bias of the reconstruction method (about -2.5 mrad in the aerogel, as in the full simulation), the bending and the cell
+geometry are part of the expectation; sigma_h = sigma_1/sqrt(N) with sigma_1 their single-photon spread. Without this
+calibration (CalibratedHypotheses false) the test uses acos(1/(n beta)) and the scatter of the measured photons, which
+identifies 3-5 GeV kaons correctly only half of the time.
 
 ## The algorithm (per event, two passes)
 
