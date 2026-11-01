@@ -28,18 +28,20 @@ three-sigma reaches within 5 %, two configurations predicted blind. Validated ra
 
 ## Which ARC configuration the cards describe
 
-The validation and the design study use three labels; the cards in this repository are **B** (two gases) and **C** (Xe 2 bar):
+The ARC geometry is k4geo ALFA_o1_v01: the ALFA_o1_v00 detector of the ALFA group with the ARC cells of the CLD
+design (CLD_o3_v01, 80 x 80 mm SiPM arrays) integrated as barrel and endcaps for this study; the aerogel index was raised from
+n = 1.019 (CLD) to 1.030 here. The validation and the design study use three labels; the cards in this repository are **B** (two gases) and **C** (Xe 2 bar):
 
 | label | aerogel | SiPM arrays | status |
 |---|---|---|---|
-| A | n = 1.019, 10 mm | 80 x 80 mm (as built) | validated (blind) |
-| **B** | **n = 1.030, 10 mm** | **80 x 80 mm (as built in k4geo ALFA_o1_v01)** | **validated; `delphes_card_ALFA_Xe2bar.tcl`, `delphes_card_ALFA_C4F10.tcl`** |
+| A | n = 1.019, 10 mm | 80 x 80 mm (CLD ARC cells) | validated (blind) |
+| **B, baseline** | **n = 1.030, 10 mm** | **80 x 80 mm (CLD ARC cells, k4geo ALFA_o1_v01)** | **validated; `delphes_card_ALFA_Xe2bar.tcl`, `delphes_card_ALFA_C4F10.tcl`** |
 | **C** | **n = 1.030, 10 mm** | **89.6 mm barrel / 108.8 mm endcap, the largest that fit the cells** | **validated (blind); the ARC case study C, `delphes_card_ALFA_Xe2bar_casestudy.tcl`** |
 
-Every card states its configuration in its first lines. The case-study card differs from the as-built Xe 2 bar card only by
+Every card states its configuration in its first lines. The case-study card differs from the baseline B Xe 2 bar card only by
 the cell table (`cells_ALFA_o1_v01_bigSiPM.txt`) and by the ARC material in the track fit (6.2 % instead of 6.0 % X0 at
 90 deg, from the larger sensors); gas, pixels, mirrors and reconstruction are identical. Its gain is in the aerogel:
-3-sigma pi/K coverage 0.9-25 GeV and K/p 3.0-43 GeV (as built: 1.2-25 and 3.6-43 GeV). A C4F10 version is the C4F10
+3-sigma pi/K coverage 0.9-25 GeV and K/p 3.0-43 GeV (baseline B: 1.2-25 and 3.6-43 GeV). A C4F10 version is the C4F10
 card with the same two changes.
 
 ## Build and run

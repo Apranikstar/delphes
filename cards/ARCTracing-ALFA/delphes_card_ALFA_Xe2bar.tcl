@@ -1,5 +1,6 @@
 # ALFA Delphes card, ARC gas variant: Xe2bar. ARC simulated by the ARCTracing module.
-# ARC GEOMETRY: as built in k4geo ALFA_o1_v01 -- 80 x 80 mm SiPM arrays, 0.8 mm pixels, 10 mm aerogel n = 1.030
+# ARC GEOMETRY: baseline B -- k4geo ALFA_o1_v01 (the ALFA_o1_v00 detector with the CLD ARC cells), 80 x 80 mm SiPM arrays,
+# 0.8 mm pixels, 10 mm aerogel n = 1.030
 # ("configuration B" of the validation). The ARC case study C ("configuration C": the largest arrays that fit the
 # cells, 89.6 mm barrel / 108.8 mm endcap) is the same card with CellFile cards/ARCTracing-ALFA/cells_ALFA_o1_v01_bigSiPM.txt.
 set RandomSeed 123
@@ -309,12 +310,12 @@ module TrackCovariance TrackSmearing {
 module ARCTracing ARCTracing {
   ## ARC fast simulation by ray tracing (ARCTracing): photons generated along the helix in the aerogel and the gas from
   ## the k4geo optical tables, traced through the cell optics of the k4geo geometry (mirror, aerogel slab, SiPM array,
-  ## pixels) and reconstructed as in the full-simulation analysis. Geometry as built (configuration B): aerogel n = 1.030, 80 mm SiPM arrays; gas Xe2bar.
+  ## pixels) and reconstructed as in the full-simulation analysis. Baseline geometry (configuration B): aerogel n = 1.030, 80 mm SiPM arrays; gas Xe2bar.
   set InputArray TrackSmearing/tracks
   set OutputArray tracks
   set Bz $::B
 
-  set CellFile cards/ARCTracing-ALFA/cells_ALFA_o1_v01.txt      ;# as built: 80 mm arrays (B); cells_ALFA_o1_v01_bigSiPM.txt: case study (C)
+  set CellFile cards/ARCTracing-ALFA/cells_ALFA_o1_v01.txt      ;# baseline B: 80 mm arrays; cells_ALFA_o1_v01_bigSiPM.txt: case study (C)
   set OpticsFile cards/ARCTracing-ALFA/arc_optics_tables.txt
 
   ## radiators: index tables (n - 1 scaled by *IndexScale). Aerogel attenuation as in the Geant4 material of the full
