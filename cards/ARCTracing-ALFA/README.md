@@ -71,6 +71,7 @@ per core): 5.5 ms per event with the ARC against 3.6 ms without, Pythia and ROOT
 | `Window`, `MinPe` | window around the hypothesis angle [rad]; photons needed for a ring | 0.025, 3 |
 | `GasSigmaSingleFloor`, `AerogelSigmaSingleFloor`, `GasSigmaCorr`, `AerogelSigmaCorr`, `SigmaTrack` | per-track resolution: sigma^2 = max(rms^2, floor^2)/N + corr^2 + track^2 [rad] | 1.0e-3, 1.5e-3, 0, 0, 0 |
 | `SharedCells` | all tracks of a cell are reconstructed against the pooled photons of the cell | true |
+| `CalibratedHypotheses`, `TestPhotons` | hypothesis test with the expected angle and single-photon spread of each hypothesis taken from test photons reconstructed like the data, and a missing ring weighted by P(N < MinPe); number of test photons per hypothesis and radiator | true, 40 |
 | `UseTrueTrack`, `UseTrueMomentumForPID`, `TrueHypothesisAngle` | validation switches (true track and momentum; window around the true angle) | false, false, false |
 
 Another ARC geometry is another cell table; another gas, pressure or aerogel is another table or scale.

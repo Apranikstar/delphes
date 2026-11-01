@@ -139,6 +139,8 @@ private:
   Double_t fDebugMonoEnergy;
   Bool_t fDebugMidEmission;
   Bool_t fSharedCells;
+  Bool_t fCalibratedHypotheses;
+  Int_t fTestPhotons;
   Bool_t fAerogelSlabInPath, fAerogelRayleigh, fAerogelAbsorption, fUseTrueTrack, fUseTrueMomentumForPID, fTrueHypothesisAngle;
 
   std::vector<Table> fTables; //!
