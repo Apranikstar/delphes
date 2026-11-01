@@ -1,6 +1,6 @@
-# ALFA Delphes card, ARC gas variant: Xe2bar, OPTIMISED ARC. ARC simulated by the ARCTracing module.
+# ALFA Delphes card, ARC gas variant: Xe2bar, ARC CASE STUDY C. ARC simulated by the ARCTracing module.
 # ARC GEOMETRY: the cells of k4geo ALFA_o1_v01 with the largest SiPM arrays that fit them -- 89.6 mm (barrel) /
-# 108.8 mm (endcap) instead of 80 mm; 0.8 mm pixels, 10 mm aerogel n = 1.030 ("configuration C" of the design study,
+# 108.8 mm (endcap) instead of 80 mm; 0.8 mm pixels, 10 mm aerogel n = 1.030 ("configuration C", ARC design study by Apranik,
 # validated blind against the Geant4 full simulation). Differs from delphes_card_ALFA_Xe2bar.tcl (as built) only by the cell
 # table and by the ARC material in the track fit (6.2% instead of 6.0% X0 at 90 deg, from the larger sensors).
 set RandomSeed 123
@@ -310,12 +310,12 @@ module TrackCovariance TrackSmearing {
 module ARCTracing ARCTracing {
   ## ARC fast simulation by ray tracing (ARCTracing): photons generated along the helix in the aerogel and the gas from
   ## the k4geo optical tables, traced through the cell optics of the k4geo geometry (mirror, aerogel slab, SiPM array,
-  ## pixels) and reconstructed as in the full-simulation analysis. Optimised geometry (configuration C): aerogel n = 1.030, SiPM arrays 89.6 mm (barrel) / 108.8 mm (endcap); gas Xe2bar.
+  ## pixels) and reconstructed as in the full-simulation analysis. Case-study geometry (configuration C): aerogel n = 1.030, SiPM arrays 89.6 mm (barrel) / 108.8 mm (endcap); gas Xe2bar.
   set InputArray TrackSmearing/tracks
   set OutputArray tracks
   set Bz $::B
 
-  set CellFile cards/ARCTracing-ALFA/cells_ALFA_o1_v01_bigSiPM.txt   ;# optimised: 89.6 / 108.8 mm arrays (C); cells_ALFA_o1_v01.txt: as built (B)
+  set CellFile cards/ARCTracing-ALFA/cells_ALFA_o1_v01_bigSiPM.txt   ;# case study C: 89.6 / 108.8 mm arrays (C); cells_ALFA_o1_v01.txt: as built (B)
   set OpticsFile cards/ARCTracing-ALFA/arc_optics_tables.txt
 
   ## radiators: index tables (n - 1 scaled by *IndexScale). Aerogel attenuation as in the Geant4 material of the full
